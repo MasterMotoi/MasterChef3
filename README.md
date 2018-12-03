@@ -10,10 +10,10 @@ la salle est composée de 2 carrés et de deux rangs par carrés. Pour la dispos
 dans la cuisine il y a : 
 
 * les plans de travails
-** stockages de denrées :
-** congélo
-** frigo
-** réserve
+	* stockages de denrées :
+	* congélo
+	* frigo
+	* réserve
 * la plonge
 
 
@@ -120,13 +120,13 @@ Git + TDD pour tous les membres.
 ### Livrables / Organisation
 Sur GIT 
 
-- [ ] Dossier « LIVRABLES FINAUX »
+* Dossier « LIVRABLES FINAUX »
 * Livrable « Dossier Architecture » → 5/12 à 12h
-** Diagrammes UML fonctionnels + techniques
-** Description DP utilisés + MVC
-** MCD + script SQL (de la création)
+	* Diagrammes UML fonctionnels + techniques
+	* Description DP utilisés + MVC
+	* MCD + script SQL (de la création)
 * Dossier Final
-** Toutes les sources du projet (sur la durée du projet)
+	* Toutes les sources du projet (sur la durée du projet)
 
 Structure code
 * Diagrammes composants et classes
