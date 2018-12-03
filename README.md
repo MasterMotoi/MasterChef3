@@ -50,6 +50,7 @@ Matos salle :
 * 150 chaises
 * 40 bouteilles d’eau
 * 40 corbeilles à pain
+* 40 cartes
 
 Matos cuisine : 
 * 5 feux de cuisines
