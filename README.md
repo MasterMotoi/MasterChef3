@@ -17,7 +17,7 @@ dans la cuisine il y a :
 * la plonge
 
 
-###Employés
+### Employés
 
 Salle :
 * 1 Maître d’hôtel
@@ -105,7 +105,7 @@ Carte:
 #### Technique
 
 OBLIGATOIRES | BONUS
-----------------------
+------------ | -----
 Diagrammes de composants et classes de l’application (ou applications). | Chaque tâche de chaque processus / thread : horodaté dans un log (en BDD ou fichier log unique)
 Diagramme(s) de séquences | 2 machines Windows distinctes : cuisine et salle de restauration
 Utiliser au moins 1 IPC par type (synchro, échange de données ou les deux). Threads. Utilisation des processus légers. | 2 machines distinctes : cuisine et salle de restauration : une sur Windows avec .NET et l’autre sur Linux en Java.
@@ -119,7 +119,8 @@ Git + TDD pour tous les membres.
 
 ### Livrables / Organisation
 Sur GIT 
-* Dossier « LIVRABLES FINAUX »
+
+- [ ] Dossier « LIVRABLES FINAUX »
 * Livrable « Dossier Architecture » → 5/12 à 12h
 ** Diagrammes UML fonctionnels + techniques
 ** Description DP utilisés + MVC
