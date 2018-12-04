@@ -5,12 +5,12 @@
 
 Le restaurant comporte 2 pièces : la salle et la cuisine
 
-la salle est composée de 2 carrés et de deux rangs par carrés. Pour la disposition des tables voir la artie _matériel_ 
+la salle est composée de 2 carrés et de deux rangs par carrés. Pour la disposition des tables voir la partie _matériel_ 
 
 dans la cuisine il y a : 
 
-* les plans de travails
-	* stockages de denrées :
+* les plans de travail
+	* stockage de denrées :
 	* congélo
 	* frigo
 	* réserve
@@ -108,7 +108,7 @@ Clients | Mangent | 15' entrées, 25' plats, 10' desserts
 CR | Débarrasse | Pas de durée mais 5 couverts max a la fois
 CR | Amène le plat uivant si il y a lieu | Pas de durée
 Client | Part et paie | 20''
-Serveur | Débarrase la table | 2' pour une table de 4
+Serveur | Débarrasse la table | 2' pour une table de 4
 CR | Redresse la table | 3' pour une table de 4
 
 Attention :
