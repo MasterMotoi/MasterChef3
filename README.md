@@ -223,3 +223,10 @@ Structure code
 * BDD → SQL Server
 * Git 
 * TDD
+* DP 
+	* MVC
+	* Singleton
+	* Observer
+	* Factory machine
+	* Null object
+	* Strategy
