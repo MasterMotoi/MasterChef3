@@ -102,11 +102,11 @@ Acteur | Action | Durée
 CR (chef de rang) | Présente la carte | Pas de durée
 CR | Attends | 5'
 CR | Prend les commandes (possiblement en 2 temps) | 30'' par clients
-CR | Amène pain et eau (x2 pour plus de 6 personnes) | Pas de durée
-CR | Apporte la nourriture | Pas de durée
+Commis de salle | Amène pain et eau (x2 pour plus de 6 personnes) | Pas de durée
+Serveur | Apporte la nourriture | Pas de durée
 Clients | Mangent | 15' entrées, 25' plats, 10' desserts
-CR | Débarrasse | Pas de durée mais 5 couverts max a la fois
-CR | Amène le plat uivant si il y a lieu | Pas de durée
+Serveur | Débarrasse | Pas de durée mais 5 couverts max a la fois
+Serveur | Amène le plat uivant si il y a lieu | Pas de durée
 Client | Part et paie | 20''
 Serveur | Débarrasse la table | 2' pour une table de 4
 CR | Redresse la table | 3' pour une table de 4
