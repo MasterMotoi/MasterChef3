@@ -1,36 +1,10 @@
-#------------------------------------------------------------
-#        Script MySQL.
-#------------------------------------------------------------
-
-
-#------------------------------------------------------------
-# Table: boisson
-#------------------------------------------------------------
-
 CREATE TABLE boisson(
         id_boisson  Int  Auto_increment  NOT NULL ,
         nom_boisson Varchar (50) NOT NULL ,
-        prix_vin    Decimal NOT NULL
+        prix_boisson    Decimal NOT NULL
 	,CONSTRAINT boisson_PK PRIMARY KEY (id_boisson)
 )ENGINE=InnoDB;
 
-
-#------------------------------------------------------------
-# Table: table
-#------------------------------------------------------------
-
-CREATE TABLE table(
-        id_table     Int  Auto_increment  NOT NULL ,
-        carre_table  Decimal NOT NULL ,
-        rang_table   Decimal NOT NULL ,
-        numero_table Decimal NOT NULL
-	,CONSTRAINT table_PK PRIMARY KEY (id_table)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: reservation
-#------------------------------------------------------------
 
 CREATE TABLE reservation(
         id_reservation      Int  Auto_increment  NOT NULL ,
@@ -42,10 +16,6 @@ CREATE TABLE reservation(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: commande
-#------------------------------------------------------------
-
 CREATE TABLE commande(
         id_commande Int  Auto_increment  NOT NULL ,
         id_table    Int NOT NULL
@@ -53,9 +23,6 @@ CREATE TABLE commande(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: personnel
-#------------------------------------------------------------
 
 CREATE TABLE personnel(
         id_personnel     Int  Auto_increment  NOT NULL ,
@@ -67,12 +34,10 @@ CREATE TABLE personnel(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: recette
-#------------------------------------------------------------
 
 CREATE TABLE recette(
         id_recette          Int  Auto_increment  NOT NULL ,
+        nom_recette Varchar (50) NOT NULL ,
         prix_recette        Decimal NOT NULL ,
         type_recette        Varchar (50) NOT NULL ,
         preparateur_recette Varchar (50) NOT NULL ,
@@ -85,12 +50,10 @@ CREATE TABLE recette(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: ingredient
-#------------------------------------------------------------
 
 CREATE TABLE ingredient(
         id_ingredient       Int  Auto_increment  NOT NULL ,
+        nom_ingredient Varchar (50) NOT NULL ,
         stockage_ingredient Varchar (50) NOT NULL ,
         quantite_ingredient Decimal NOT NULL ,
         date_peremption     Datetime NOT NULL
@@ -98,9 +61,6 @@ CREATE TABLE ingredient(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: composer
-#------------------------------------------------------------
 
 CREATE TABLE composer(
         id_recette    Int NOT NULL ,
@@ -109,9 +69,6 @@ CREATE TABLE composer(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: constituer
-#------------------------------------------------------------
 
 CREATE TABLE constituer(
         id_boisson  Int NOT NULL ,
@@ -121,9 +78,6 @@ CREATE TABLE constituer(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: preparer
-#------------------------------------------------------------
 
 CREATE TABLE preparer(
         id_recette   Int NOT NULL ,
@@ -132,9 +86,6 @@ CREATE TABLE preparer(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: materiel
-#------------------------------------------------------------
 
 CREATE TABLE materiel(
         id_materiel         Int  Auto_increment  NOT NULL ,
@@ -147,9 +98,6 @@ CREATE TABLE materiel(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: materiel_lavable
-#------------------------------------------------------------
 
 CREATE TABLE materiel_lavable(
         id_materiel_lavable Int  Auto_increment  NOT NULL ,
@@ -162,7 +110,41 @@ CREATE TABLE materiel_lavable(
 
 
 
+CREATE TABLE etre(
+		id_materiel Int Auto_increment NOT NULL , 
+		id_materiel_lavable Int NOT NULL 
+	,CONSTRAINT etre_PK PRIMARY KEY (id_materiel,id_materiel_lavable) 
+)ENGINE=InnoDB;
 
-	=======================================================================
-	   Désolé, il faut activer cette version pour voir la suite du script ! 
-	=======================================================================
+
+CREATE TABLE necessiter( 
+		id_recette Int Auto_increment NOT NULL , 
+		id_materiel Int NOT NULL 
+	,CONSTRAINT necessiter_PK PRIMARY KEY (id_recette,id_materiel) 
+)ENGINE=InnoDB;
+
+
+CREATE TABLE commander( 
+		id_commande Int Auto_increment NOT NULL , 
+		id_table Int NOT NULL 
+	,CONSTRAINT commander_PK PRIMARY KEY (id_commande,id_table) 
+)ENGINE=InnoDB;
+
+
+CREATE TABLE mobiliser( 
+		id_table Int Auto_increment NOT NULL , 
+		id_reservation Int NOT NULL 
+	,CONSTRAINT mobiliser_PK PRIMARY KEY (id_table,id_reservation) 
+)ENGINE=InnoDB;
+
+
+CREATE TABLE tablee(
+        id_tablee Int  Auto_increment  NOT NULL ,
+        carre_tablee Decimal NOT NULL ,
+        rang_tablee Decimal NOT NULL ,
+        capacite_tablee Decimal NOT NULL ,
+        occupation_tablee Bool NOT NULL ,
+        numero_tablee Decimal NOT NULL
+        ,CONSTRAINT tablee_PK PRIMARY KEY (id_tablee)
+)ENGINE=InnoDB;
+
