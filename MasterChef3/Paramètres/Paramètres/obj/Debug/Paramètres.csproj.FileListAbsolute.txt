@@ -8,3 +8,13 @@ C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.csproj
 C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.csproj.CoreCompileInputs.cache
 C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.exe
 C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.pdb
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\bin\Debug\Paramètres.exe.config
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\bin\Debug\Paramètres.exe
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\bin\Debug\Paramètres.pdb
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\obj\Debug\Paramètres.csprojAssemblyReference.cache
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\obj\Debug\Paramètres.Form1.resources
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\obj\Debug\Paramètres.Properties.Resources.resources
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\obj\Debug\Paramètres.csproj.GenerateResource.cache
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\obj\Debug\Paramètres.csproj.CoreCompileInputs.cache
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\obj\Debug\Paramètres.exe
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\Paramètres\Paramètres\obj\Debug\Paramètres.pdb

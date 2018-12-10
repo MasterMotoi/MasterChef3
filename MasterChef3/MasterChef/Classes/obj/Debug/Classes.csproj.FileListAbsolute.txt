@@ -8,3 +8,7 @@ C:\Users\titou\source\repos\MasterChef\Classes\obj\Debug\Classes.csprojAssemblyR
 C:\Users\titou\source\repos\MasterChef\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
 C:\Users\titou\source\repos\MasterChef\Classes\obj\Debug\Classes.dll
 C:\Users\titou\source\repos\MasterChef\Classes\obj\Debug\Classes.pdb
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\MasterChef\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\MasterChef\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\MasterChef\Classes\obj\Debug\Classes.dll
+C:\Users\titou\OneDrive\Documents\Github\MasterChef3\MasterChef3\MasterChef\Classes\obj\Debug\Classes.pdb
