@@ -1,0 +1,10 @@
+C:\Users\titou\source\repos\Paramètres\Paramètres\bin\Debug\Paramètres.exe.config
+C:\Users\titou\source\repos\Paramètres\Paramètres\bin\Debug\Paramètres.exe
+C:\Users\titou\source\repos\Paramètres\Paramètres\bin\Debug\Paramètres.pdb
+C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.csprojAssemblyReference.cache
+C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.Form1.resources
+C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.Properties.Resources.resources
+C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.csproj.GenerateResource.cache
+C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.csproj.CoreCompileInputs.cache
+C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.exe
+C:\Users\titou\source\repos\Paramètres\Paramètres\obj\Debug\Paramètres.pdb
