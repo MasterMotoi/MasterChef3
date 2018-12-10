@@ -144,7 +144,7 @@
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(189, 54);
+            this.numericUpDown6.Location = new System.Drawing.Point(189, 59);
             this.numericUpDown6.Name = "numericUpDown6";
             this.numericUpDown6.Size = new System.Drawing.Size(58, 22);
             this.numericUpDown6.TabIndex = 9;
