@@ -54,9 +54,7 @@ CREATE TABLE recette(
 CREATE TABLE ingredient(
         id_ingredient       Int  Auto_increment  NOT NULL ,
         nom_ingredient Varchar (50) NOT NULL ,
-        stockage_ingredient Varchar (50) NOT NULL ,
-        quantite_ingredient Decimal NOT NULL ,
-        date_peremption     Datetime NOT NULL
+        stockage_ingredient Varchar (50) NOT NULL 
 	,CONSTRAINT ingredient_PK PRIMARY KEY (id_ingredient)
 )ENGINE=InnoDB;
 
@@ -101,10 +99,8 @@ CREATE TABLE materiel(
 
 CREATE TABLE materiel_lavable(
         id_materiel_lavable Int  Auto_increment  NOT NULL ,
-        machine             Varchar (50) NOT NULL ,
         propre              Bool NOT NULL ,
         id_materiel         Int NOT NULL ,
-        id_personnel        Int NOT NULL
 	,CONSTRAINT materiel_lavable_PK PRIMARY KEY (id_materiel_lavable)
 )ENGINE=InnoDB;
 
@@ -142,9 +138,9 @@ CREATE TABLE tablee(
         id_tablee Int  Auto_increment  NOT NULL ,
         carre_tablee Decimal NOT NULL ,
         rang_tablee Decimal NOT NULL ,
+        numero_tablee Decimal NOT NULL ,
         capacite_tablee Decimal NOT NULL ,
-        occupation_tablee Bool NOT NULL ,
-        numero_tablee Decimal NOT NULL
+        occupation_tablee Bool NOT NULL 
         ,CONSTRAINT tablee_PK PRIMARY KEY (id_tablee)
 )ENGINE=InnoDB;
 
