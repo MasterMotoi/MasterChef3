@@ -17,18 +17,32 @@ namespace MasterChef3
             public static List<MaterielLavable> materielLavable;
 
 
-            public static void remplirRecettes()
+        public static void remplirRecettes()
             {
-            
+            List<string> nomRecettes = connexion.nomrecettes();
+            List<string> typeCuisinier = connexion.typeCuisinier();
+            List<string> prixRecette = connexion.prixRecette();
+            List<string> typeRecette = connexion.typerecettes();
+            List<string> tempsPreparation = connexion.tempspreparations();
+            List<string> tempsRepos = connexion.tempsrepos();
+            List<string> tempsCuisson = connexion.tempscuissons();
 
+            for (int i = 0; i < nomRecettes.Count; i++)
+                {
+                    Recette r = new Recette(nomRecettes[i], typeCuisinier[i], prixRecette[i], typeRecette[i], tempsPreparation[i], tempsRepos[i], tempsCuisson[i]);
+                    recettes.Add(r);
+                }
 
             }
 
         public static void remplirMateriel()
             {
-                /*je me connct a la base donnees et je remplis la liste du materiel*/
-            }
+            List<string> nomRecettes = connexion.nomrecettes();
+        }
+
+        
        
     }
-   
+
+    
 }

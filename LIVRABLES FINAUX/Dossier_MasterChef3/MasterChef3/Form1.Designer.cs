@@ -1,65 +1,62 @@
-﻿namespace MasterChef3
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace MasterChef3
 {
-    partial class Form1
+    class connexion
     {
-        /// <summary>
-        /// Variable nécessaire au concepteur.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private static SqlConnection connexion;
 
-        /// <summary>
-        /// Nettoyage des ressources utilisées.
-        /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
-        protected override void Dispose(bool disposing)
+        public static SqlConnection Connexion { get => connexion; set => connexion = value; }
+
+        public static void ConnectionBDD()
         {
-            if (disposing && (components != null))
+
+            //SQL Connection
+            Connexion = new SqlConnection();
+            Connexion.ConnectionString = @"data source=DESKTOP-S8MO9E1;initial catalog=default;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            Connexion.Open();
+
+        }
+
+        public static List<string> nomRecettes
+        {
+            get
             {
-                components.Dispose();
+                // Requête SQL
+                SqlCommand selectCommand = new SqlCommand();
+                selectCommand.Connection = Connexion; // Connexion instanciée auparavant
+                selectCommand.CommandText = "SELECT nom_recette FROM recette";
+                selectCommand.CommandText = "SELECT prix_recette FROM recette";
+                selectCommand.CommandText = "SELECT type_recette FROM recette";
+                selectCommand.CommandText = "SELECT typeCuisinier FROM recette";
+                selectCommand.CommandText = "SELECT temps_preparation FROM recette";
+                selectCommand.CommandText = "SELECT temps_repos FROM recette";
+                selectCommand.CommandText = "SELECT temps_cuisson FROM recette";
+
+                SqlDataReader reader; // Permet de lire les données
+                reader = selectCommand.ExecuteReader();
+
             }
-            base.Dispose(disposing);
+
+            return;
         }
 
-        #region Code généré par le Concepteur Windows Form
-
-        /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
-        /// </summary>
-        private void InitializeComponent()
+        private static void Close()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1258, 643);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2275, 1523);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            throw new NotImplementedException();
         }
 
-        #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private static void Open()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
 
