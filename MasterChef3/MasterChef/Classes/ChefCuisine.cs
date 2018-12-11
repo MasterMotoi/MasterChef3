@@ -18,25 +18,50 @@ namespace Classes
         /// <summary>
         /// gives a list of recipes to a list of cookers
         /// </summary>
-        public dispatcherRecettes(List<Recette> recettes, List<Cuisinier> cuisiniers)
+        public void dispatcherRecettes(Commande commande)
         {
-            foreach (Recette r in recettes)
+            List<Cuisinier> cuisiniers = Donnees.cuisiniers;
+            string typeACuisiner = this.trouverTypeACuisiner(commande.recettes);
+
+            foreach (Recette r in commande.recettes)
             {
-                foreach (Cuisinier c in cuisiniers)
+                if (r.type == typeACuisiner)
                 {
-                    if (r.GetType == c.type)
+                    foreach (Cuisinier c in cuisiniers)
                     {
-                        c.recettesAEffectuer.Add(r);
-                        break;
+                        if (r.type == c.type)
+                        {
+                            c.recettesAEffectuer.Add(r);
+                            break;
+                        }
                     }
                 }
             }
+        }
+        public string trouverTypeACuisiner(List<Recette> recettes)
+        {
+            List<string> typesDisponibles = new List<string>();
+
+            foreach(Recette r in recettes)
+            {
+                typesDisponibles.Add(r.type);
+            }
+
+            if(typesDisponibles.Contains("entree"))
+            {
+                return "entree";
+            }
+            if(typesDisponibles.Contains("plat"))
+            {
+                return "plat";
+            }
+            return "dessert";
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public decrementerRecette(Recette recette, ChefRang chefRang)
+        public void decrementerRecette(Recette recette)
         {
             recette.restants -= 1;
         }

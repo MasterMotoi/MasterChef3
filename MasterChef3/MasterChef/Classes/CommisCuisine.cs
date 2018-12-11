@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    class CommisCuisine
+    public class CommisCuisine
     {
+        public CommisCuisine()
+        {
+
+        }
+        public 
     }
 }

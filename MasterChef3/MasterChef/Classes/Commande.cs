@@ -10,7 +10,8 @@ namespace Classes
     {
 
         public List<Recette> recettes;
-        private GroupeClients clients;
+        public GroupeClients clients;
+        public List<Recette> recettesValidees;
 
         /// <summary>
         /// Initiate a new Command

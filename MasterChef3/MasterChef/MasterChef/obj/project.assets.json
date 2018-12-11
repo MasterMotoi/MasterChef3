@@ -688,11 +688,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\titou\\OneDrive\\Documents\\Github\\MasterChef3\\MasterChef3\\MasterChef\\MasterChef\\MasterChef.csproj",
+      "projectUniqueName": "C:\\Users\\titou\\source\\repos\\MasterChef\\MasterChef\\MasterChef.csproj",
       "projectName": "MasterChef",
-      "projectPath": "C:\\Users\\titou\\OneDrive\\Documents\\Github\\MasterChef3\\MasterChef3\\MasterChef\\MasterChef\\MasterChef.csproj",
+      "projectPath": "C:\\Users\\titou\\source\\repos\\MasterChef\\MasterChef\\MasterChef.csproj",
       "packagesPath": "C:\\Users\\titou\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\titou\\OneDrive\\Documents\\Github\\MasterChef3\\MasterChef3\\MasterChef\\MasterChef\\obj\\",
+      "outputPath": "C:\\Users\\titou\\source\\repos\\MasterChef\\MasterChef\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

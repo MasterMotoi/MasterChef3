@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,13 +45,17 @@
     <Compile Include="ChefCuisine.cs" />
     <Compile Include="ChefRang.cs" />
     <Compile Include="Commande.cs" />
-    <Compile Include="CommisCuisine.cs" />
     <Compile Include="CommisSalle.cs" />
+    <Compile Include="Comptoir.cs" />
     <Compile Include="Cuisinier.cs" />
     <Compile Include="GroupeClients.cs" />
     <Compile Include="MaitreHotel.cs" />
     <Compile Include="Plongeur.cs" />
     <Compile Include="Recette.cs" />
+    <Compile Include="Serveur.cs" />
+    <Compile Include="SocketClientSalle.cs" />
+    <Compile Include="SocketClientCuisine.cs" />
+    <Compile Include="Socketserv.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

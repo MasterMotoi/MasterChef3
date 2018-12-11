@@ -37,7 +37,7 @@ namespace Classes
         /// <summary>
         /// assign a table to a group of clients
         /// </summary>
-        public void assignerTable(GroupeClients clients, Table[] tables)
+        public void assignerTable(GroupeClients clients, List<Table> tables)
         {
             clients.table = TableMinCapacite(tablesCapacite(clients.nombre, tablesLibres(tables)));
         }
@@ -60,7 +60,7 @@ namespace Classes
         /// <summary>
         /// returns a list of tables with a sufficient capacity
         /// </summary>
-        public List<Table> tablesCapacite(int capacite, Liste<Table> tables)
+        public List<Table> tablesCapacite(int capacite, List<Table> tables)
         {
             List<Table> listeTablesCapacite = new List<Table>();
             foreach (Table t in tables)
@@ -79,11 +79,11 @@ namespace Classes
         {
             Table tableChoisie = tables[0];
 
-            for (int i = 1; i < tables.length; i++)
+            for (int i = 1; i < tables.Count; i++)
             {
-                if (t.capacite < tableChoisie.capacite)
+                if (tables[i].capacite < tableChoisie.capacite)
                 {
-                    Table tableChoisie = tables[i];
+                    tableChoisie = tables[i];
                 }
             }
             return tableChoisie;

@@ -1,6 +1,0 @@
-C:\Users\Belcourtois\source\repos\MasterChef\Classes\bin\Debug\Classes.dll
-C:\Users\Belcourtois\source\repos\MasterChef\Classes\bin\Debug\Classes.pdb
-C:\Users\Belcourtois\source\repos\MasterChef\Classes\obj\Debug\Classes.csprojAssemblyReference.cache
-C:\Users\Belcourtois\source\repos\MasterChef\Classes\obj\Debug\Classes.csproj.CoreCompileInputs.cache
-C:\Users\Belcourtois\source\repos\MasterChef\Classes\obj\Debug\Classes.dll
-C:\Users\Belcourtois\source\repos\MasterChef\Classes\obj\Debug\Classes.pdb

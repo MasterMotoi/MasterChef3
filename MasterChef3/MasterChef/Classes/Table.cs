@@ -12,6 +12,7 @@ namespace Classes
         public int numero { get; set; }
         public int capacite { get; set; }
         public bool dressee { get; set; }
+        public bool propre { set; get; }
 
         /// <summary>
         /// Initiate a new table with a capacity and a number

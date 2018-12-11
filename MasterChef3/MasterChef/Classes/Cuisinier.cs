@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    class Cuisinier
+    public class Cuisinier
     {
-        private string type;
-        private List<Recette> recettesAEffectuer;
+        public string type { get; set; }
+        public List<Recette> recettesAEffectuer;
 
         public Cuisinier(string type)
         {
             this.type = type;
+        }
+        public void deposerPlat(Comptoir comptoir, Recette recette)
+        {
+            comptoir.recettes.Add(recette);
         }
     }
 }

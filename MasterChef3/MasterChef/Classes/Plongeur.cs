@@ -8,5 +8,6 @@ namespace Classes
 {
     class Plongeur
     {
+        public List<>
     }
 }

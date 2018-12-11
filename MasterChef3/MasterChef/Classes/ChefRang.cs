@@ -38,12 +38,13 @@ namespace Classes
             {
                 if (cc.prendreEnCompteRecette(r) == true)
                 {
-                    this.clients.commande.recettes.Remove(r);
+                    this.clients.commande.recettesValidees.Add(r);
                 }
             }
-            if (this.clients.commande.recettes.Count == 0)
+            if (this.clients.commande.recettesValidees.Count == this.clients.commande.recettes.Count)
             {
                 this.clients.commandeTransmise = true;
+                cc.dispatcherRecettes(this.clients.commande);
             }
             else
             {
@@ -65,12 +66,13 @@ namespace Classes
         public void changerCommande()
         {
             List<Recette> recettesIndisponibles = new List<Recette>();
-            do
+            List<Recette> recettesExistantes = Donnees.recettesExistantes;
+
+            bool commande_changee = clients.changerCommande(recettesExistantes);
+            while (commande_changee == true)
             {
-                this.clients.changerRecettes(recettesIndisponibles);
-                recettesIndisponibles = trouverRecettesIndisponibles(this.clients.commande.recettes);
+                commande_changee = clients.changerCommande(recettesExistantes);
             }
-            while (recettesIndisponibles.length > 0);
         }
 
         /// <summary>
@@ -80,12 +82,14 @@ namespace Classes
         {
             this.clients.commandeTransmise = false;
             List<Recette> recettesIndisponibles = new List<Recette>();
-            do
+            List<Recette> recettesExistantes = Donnees.recettesExistantes;
+            int recettes_changees = clients.changerRecettes(recettesExistantes);
+
+            while(recettes_changees>0)
             {
-                clients.changerRecettes(recettesIndisponibles);
-                recettesIndisponibles = trouverRecettesIndisponibles(clients.commande.recettes);
+                recettes_changees = clients.changerRecettes(recettesExistantes);
             }
-            while (recettesIndisponibles.length > 0);
+
             this.clients = clients;
         }
 

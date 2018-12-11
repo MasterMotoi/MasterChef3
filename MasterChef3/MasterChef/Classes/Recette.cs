@@ -8,6 +8,8 @@ namespace Classes
 {
     public class Recette
     {
+        public int restants { get; set; }
+        public string type { get; set; }
         /// <summary>
         /// initiate a new recipe
         /// </summary>
