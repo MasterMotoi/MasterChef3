@@ -16,9 +16,9 @@ namespace Classes
         /// <summary>
         /// Initiate a new Command
         /// </summary>
-        public Commande()
+        public Commande(GroupeClients clients)
         {
-
+            this.clients = clients;
         }
     }
 }

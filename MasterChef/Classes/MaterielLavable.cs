@@ -10,8 +10,10 @@ namespace Classes
     {
         public bool propre;
 
-        public MaterielLavable()
+        public MaterielLavable(string nom, int nombre):base(nom,nombre)
         {
+            this.nom = nom;
+            this.nombre = nombre;
             this.propre = true;
         }
         public void utiliser()

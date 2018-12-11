@@ -8,17 +8,15 @@ namespace Classes
 {
     class MaitreHotel
     {
-        /// <summary>
-        /// gives the order to the chef de rang to bring clients to their table.
-        /// </summary>
+        public MaitreHotel()
+        {
+
+        }
         public void donnerOrdreInstallerClients(ChefRang cr, GroupeClients clients)
         {
             cr.placerClients(clients);
         }
-
-        /// <summary>
-        /// Welcomes groups of clients
-        /// </summary>
+        
         public List<GroupeClients> acueillir(GroupeClients clients)
         {
             List<GroupeClients> nouveauxGroupes = new List<GroupeClients>();
@@ -33,18 +31,12 @@ namespace Classes
             clients.accueilli = true;
             return nouveauxGroupes;
         }
-
-        /// <summary>
-        /// assign a table to a group of clients
-        /// </summary>
+        
         public void assignerTable(GroupeClients clients, List<Table> tables)
         {
             clients.table = TableMinCapacite(tablesCapacite(clients.nombre, tablesLibres(tables)));
         }
-
-        /// <summary>
-        /// return the list of free tables in a list of tables
-        /// </summary>
+        
         public List<Table> tablesLibres(List<Table> tables)
         {
             List<Table> listeTablesLibres = new List<Table>();
@@ -57,9 +49,7 @@ namespace Classes
             }
             return listeTablesLibres;
         }
-        /// <summary>
-        /// returns a list of tables with a sufficient capacity
-        /// </summary>
+        
         public List<Table> tablesCapacite(int capacite, List<Table> tables)
         {
             List<Table> listeTablesCapacite = new List<Table>();
@@ -72,9 +62,7 @@ namespace Classes
             }
             return listeTablesCapacite;
         }
-        /// <summary>
-        /// returns the table with the lowest capacity from a list of tables
-        /// </summary>
+        
         public Table TableMinCapacite(List<Table> tables)
         {
             Table tableChoisie = tables[0];

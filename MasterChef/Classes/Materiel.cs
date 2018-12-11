@@ -11,8 +11,9 @@ namespace Classes
         public int nombre;
         public string nom;
 
-        public Materiel(int nombre)
+        public Materiel(string nom, int nombre)
         {
+            this.nom = nom;
             this.nombre = nombre;
         }
     }

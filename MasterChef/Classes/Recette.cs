@@ -17,13 +17,14 @@ namespace Classes
         /// <summary>
         /// initiate a new recipe
         /// </summary>
-        public Recette(string type, string typeCuisinier, int tempsPreparation, int tempsCuisson, int tempsRepos)
+        public Recette(string type, string typeCuisinier, int tempsPreparation, int tempsCuisson, int tempsRepos, int restants)
         {
             this.type = type;
             this.typeCuisinier = typeCuisinier;
             this.tempsPreparation = tempsPreparation;
             this.tempsCuisson = tempsCuisson;
             this.tempsRepos = tempsRepos;
+            this.restants = restants;
         }
     }
 }

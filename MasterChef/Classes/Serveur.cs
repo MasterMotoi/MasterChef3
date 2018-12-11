@@ -9,6 +9,7 @@ namespace Classes
     public class Serveur
     {
         public List<Recette> recettes_portees;
+
         public Serveur()
         {
             this.recettes_portees = new List<Recette>();
