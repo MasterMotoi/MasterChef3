@@ -8,6 +8,7 @@ namespace Classes
 {
     public class Recette
     {
+        public string nom;
         public int restants { get; set; }
         public string type { get; set; }
         public string typeCuisinier { set; get; }
@@ -18,8 +19,9 @@ namespace Classes
         /// <summary>
         /// initiate a new recipe
         /// </summary>
-        public Recette(string type, string typeCuisinier, int tempsPreparation, int tempsCuisson, int tempsRepos, int restants, int prix)
+        public Recette(string nom,string type, string typeCuisinier, int tempsPreparation, int tempsCuisson, int tempsRepos, int restants, int prix)
         {
+            this.nom = nom;
             this.type = type;
             this.typeCuisinier = typeCuisinier;
             this.tempsPreparation = tempsPreparation;

@@ -8,7 +8,6 @@ namespace Classes
 {
     public class Commande
     {
-
         public List<Recette> recettes;
         public GroupeClients clients;
         public List<Recette> recettesValidees;
@@ -18,6 +17,8 @@ namespace Classes
         /// </summary>
         public Commande(GroupeClients clients)
         {
+            this.recettes = new List<Recette>();
+            this.recettesValidees = new List<Recette>();
             this.clients = clients;
         }
     }

@@ -24,6 +24,7 @@ namespace Classes
         /// </summary>
         public GroupeClients(int nombre=2)
         {
+            this.commande = new Commande(this);
             this.temps = 0;
             this.aTimer = new System.Timers.Timer();
             this.aTimer.Interval = 1000;
@@ -35,6 +36,13 @@ namespace Classes
             this.commandeTransmise = false;
         }
 
+        public void choisirCommande(ChefRang cr)
+        {
+            System.Threading.Thread.Sleep(5000);
+            this.aTimer.Enabled = true;
+            this.genererCommande(this.nombre, MainController.recettes);
+            cr.prendreCommande(this);
+        }
         /// <summary>
         /// changes the command of the client group regarding the number of remaining recipes
         /// </summary>
@@ -120,7 +128,7 @@ namespace Classes
             }
             return commande;
         }
-
+       
         /// <summary>
         /// generate a random recipe using a list of recipes, excluding unavailable ones.
         /// </summary>

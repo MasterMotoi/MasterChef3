@@ -15,6 +15,7 @@ namespace MasterChef3
     {
         salle sal = new salle();
         cuisine cuis = new cuisine();
+        detailsTable tab = new detailsTable();
         NumericUpDown nbClient = new NumericUpDown();
         NumericUpDown numTable = new NumericUpDown();
         int clientsPlaces;
@@ -22,6 +23,7 @@ namespace MasterChef3
 
         public settings()
         {
+
             clientsPlaces = clientsRecales = 0;
 
             InitializeComponent();
@@ -61,24 +63,48 @@ namespace MasterChef3
             addClient.Click += new System.EventHandler(this.clientAdd);
             salleBox.Controls.Add(addClient);
 
-            numTable.Location = new Point(50, 100);
+            numTable.Location = new Point(50, 50);
             salleBox.Controls.Add(numTable);
 
             Button tableNumber = new Button();
             tableNumber.Text = "Table nb";
-            tableNumber.Location = new Point(200, 100);
+            tableNumber.Location = new Point(200, 50);
             tableNumber.Click += new System.EventHandler(this.tableState);
             salleBox.Controls.Add(tableNumber);
+
+            Button tableDetails = new Button();
+            tableDetails.Text = "Details";
+            tableDetails.Location = new Point(200, 100);
+            tableDetails.Click += new System.EventHandler(this.getTableDetail);
+            salleBox.Controls.Add(tableDetails);
 
 
 
 
             GroupBox cuisineBox = new GroupBox();
             cuisineBox.FlatStyle = FlatStyle.Flat;
-            cuisineBox.Text = "Time Control";
+            cuisineBox.Text = "Other Control";
             cuisineBox.Size = new Size(300, 400);
             cuisineBox.Location = new Point(50, 500);
             Controls.Add(cuisineBox);
+
+            Button pause = new Button();
+            pause.Text = "Pause";
+            pause.Location = new Point(50, 50);
+            pause.Click += new System.EventHandler(this.timeManagement);
+            cuisineBox.Controls.Add(pause);
+
+            Button fastForward = new Button();
+            fastForward.Text = "Fast";
+            fastForward.Location = new Point(150, 50);
+            fastForward.Click += new System.EventHandler(this.timeManagement);
+            cuisineBox.Controls.Add(fastForward);
+
+            Button slowForward = new Button();
+            slowForward.Text = "Slow";
+            slowForward.Location = new Point(50, 100);
+            slowForward.Click += new System.EventHandler(this.timeManagement);
+            cuisineBox.Controls.Add(slowForward);
         }
 
         private void roomShow_Click (Object sender, EventArgs e)
@@ -94,6 +120,13 @@ namespace MasterChef3
                     this.cuis.Show();
                     break;
             }
+        }
+
+        public void getTableDetail (Object sender, EventArgs e)
+        {
+            tab.Show();
+            tab.Text = "Details Table " + numTable.Text;
+            tab.numTable.Text = "Table N°" + numTable.Text;
         }
 
         private void clientAdd(Object sender, EventArgs e)
@@ -115,6 +148,25 @@ namespace MasterChef3
                     clientsPlaces += nc;
                     sal.waitingQueue.Text = clientsPlaces + " clients ont été placés ce soir";
                 }
+            }
+        }
+
+        public void timeManagement (Object sender, EventArgs e)
+        {
+            Button clicked = (Button)sender;
+            switch (clicked.Text)
+            {
+                case "Pause":
+                    //On pause
+                    break;
+
+                case "Fast":
+                    //On accélère
+                    break;
+
+                case "Slow":
+                    //On ralentit
+                    break;
             }
         }
 
@@ -164,6 +216,11 @@ namespace MasterChef3
                     break;
                 
             }
+        }
+
+        private void refreshTimer_Tick(object sender, EventArgs e)
+        {
+            crState(MainController.getPositionCr(0), MainController.getPositionCr(666));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MasterChef3
 {
-    partial class settings
+    partial class detailsTable
     {
         /// <summary>
         /// Required designer variable.
@@ -29,28 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
-            this.SuspendLayout();
-            // 
-            // refreshTimer
-            // 
-            this.refreshTimer.Enabled = true;
-            this.refreshTimer.Interval = 1000;
-            this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
-            // 
-            // settings
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 572);
-            this.Name = "settings";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            this.Text = "detailsTable";
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer refreshTimer;
     }
 }

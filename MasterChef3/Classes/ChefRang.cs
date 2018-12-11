@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Classes;
+using System.Threading;
 
 namespace Classes
 {
     public class ChefRang
     {
+        public string etat;
+        public Semaphore semEtat;
+        public Semaphore semPosition;
+        public string position;
         public int carre { set; get; }
         public GroupeClients clients { get; set; }
         public bool commandeTransmise { get; set; }
@@ -18,7 +23,16 @@ namespace Classes
         /// </summary>
         public ChefRang(int carre)
         {
+            this.semEtat = new Semaphore(1, 1);
+            this.semPosition = new Semaphore(1, 1);
             this.carre = carre;
+            this.semEtat.WaitOne();
+            this.etat = "ne rien faire";
+            this.semEtat.Release();
+            this.semPosition.WaitOne();
+            this.position = "A l'accueil";
+            this.semPosition.Release();
+            this.clients = new GroupeClients(1);
         }
 
         /// <summary>
@@ -26,10 +40,19 @@ namespace Classes
         /// </summary>
         public void placerClients(GroupeClients clients)
         {
-            Console.WriteLine(clients.temps);
+
+            Console.WriteLine(this.etat);
+            this.semEtat.WaitOne();
+            this.etat = "placer un client";
+            this.semEtat.Release();
+
+            this.semPosition.WaitOne();
+            this.position = "a la table " + clients.table.numero;
+            this.semPosition.Release();
             clients.table.occupee = true;
             clients.place = true;
-            clients.aTimer.Enabled = true;
+            Thread thread = new Thread(() => clients.choisirCommande(this));
+            thread.Start();
         }
 
         /// <summary>
@@ -37,6 +60,12 @@ namespace Classes
         /// </summary>
         public void transmettreRecettesCommande(ChefCuisine cc)
         {
+            this.semEtat.WaitOne();
+            this.etat = "transmettre la commande";
+            this.semEtat.Release();
+            this.semPosition.WaitOne();
+            this.position = "a la cuisine";
+            this.semPosition.Release();
             foreach (Recette r in this.clients.commande.recettes)
             {
                 if (cc.prendreEnCompteRecette(r) == true)
@@ -60,6 +89,12 @@ namespace Classes
         /// </summary>
         public void dresserTable(Table table)
         {
+            this.semEtat.WaitOne();
+            this.etat = "dresser une table";
+            this.semEtat.Release();
+            this.semPosition.WaitOne();
+            this.position = "a la table " + table.numero;
+            this.semPosition.Release();
             table.dressee = true;
         }
 
@@ -68,6 +103,12 @@ namespace Classes
         /// </summary>
         public void changerCommande()
         {
+            this.semEtat.WaitOne();
+            this.etat = "changer une commande";
+            this.semEtat.Release();
+            this.semPosition.WaitOne();
+            this.position = "a la table " + clients.table.numero;
+            this.semPosition.Release();
             List<Recette> recettesIndisponibles = new List<Recette>();
             List<Recette> recettesExistantes = MainController.recettes;
 
@@ -76,6 +117,7 @@ namespace Classes
             {
                 commande_changee = clients.changerCommande(recettesExistantes);
             }
+            transmettreRecettesCommande(MainController.chefCuisine);
         }
 
         /// <summary>
@@ -83,9 +125,16 @@ namespace Classes
         /// </summary>
         public void prendreCommande(GroupeClients clients)
         {
+            this.clients = clients;
+            this.semEtat.WaitOne();
+            this.etat = "prendre une commande";
+            this.semEtat.Release();
+            this.semPosition.WaitOne();
+            this.position = "a la table " + clients.table.numero;
+            this.semPosition.Release();
             this.clients.commandeTransmise = false;
-            List<Recette> recettesIndisponibles = new List<Recette>();
             List<Recette> recettesExistantes = MainController.recettes;
+
             int recettes_changees = clients.changerRecettes(recettesExistantes);
 
             while(recettes_changees>0)
@@ -93,7 +142,8 @@ namespace Classes
                 recettes_changees = clients.changerRecettes(recettesExistantes);
             }
 
-            this.clients = clients;
+
+            this.transmettreRecettesCommande(MainController.chefCuisine);
         }
 
         /// <summary>

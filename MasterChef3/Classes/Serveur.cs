@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,11 @@ namespace Classes
             return aServir;
         }
 
+        public void faireQuelqueChose()
+        {
+            this.Debarrasser(MainController.tables);
+            this.Servir(MainController.clients, MainController.comptoir);
+        }
         public void amener(GroupeClients aServir)
         {
             if ((this.recettes_portees.Count)> 0)
@@ -50,6 +56,7 @@ namespace Classes
         public void Servir(List<GroupeClients> clients, Comptoir comptoir)
         {
             GroupeClients aServir = clientsAServir(clients);
+
             foreach(Recette r in comptoir.recettes)
             {
                 if(aServir.commande.recettes.Contains(r))
