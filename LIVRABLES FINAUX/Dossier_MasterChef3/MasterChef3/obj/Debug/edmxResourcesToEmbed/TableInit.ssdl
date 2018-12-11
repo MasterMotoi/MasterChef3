@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="defaultModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="boisson">
+    <Key>
+      <PropertyRef Name="id_boisson" />
+    </Key>
+    <Property Name="id_boisson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_boisson" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="prix_boisson" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="commande">
+    <Key>
+      <PropertyRef Name="id_commande" />
+    </Key>
+    <Property Name="id_commande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_table" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="commander">
+    <Key>
+      <PropertyRef Name="id_commande" />
+      <PropertyRef Name="id_table" />
+    </Key>
+    <Property Name="id_commande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_table" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="composer">
+    <Key>
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_ingredient" />
+    </Key>
+    <Property Name="id_recette" Type="int" Nullable="false" />
+    <Property Name="id_ingredient" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="constituer">
+    <Key>
+      <PropertyRef Name="id_boisson" />
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_commande" />
+    </Key>
+    <Property Name="id_boisson" Type="int" Nullable="false" />
+    <Property Name="id_recette" Type="int" Nullable="false" />
+    <Property Name="id_commande" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="etre">
+    <Key>
+      <PropertyRef Name="id_materiel" />
+      <PropertyRef Name="id_materiel_lavable" />
+    </Key>
+    <Property Name="id_materiel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_materiel_lavable" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ingredient">
+    <Key>
+      <PropertyRef Name="id_ingredient" />
+    </Key>
+    <Property Name="id_ingredient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_ingredient" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="stockage_ingredient" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materiel">
+    <Key>
+      <PropertyRef Name="id_materiel" />
+    </Key>
+    <Property Name="id_materiel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_materiel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="nombre_materiel" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="type_materiel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="lavable" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materiel_lavable">
+    <Key>
+      <PropertyRef Name="id_materiel_lavable" />
+    </Key>
+    <Property Name="id_materiel_lavable" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="propre" Type="smallint" Nullable="false" />
+    <Property Name="id_materiel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mobiliser">
+    <Key>
+      <PropertyRef Name="id_table" />
+      <PropertyRef Name="id_reservation" />
+    </Key>
+    <Property Name="id_table" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_reservation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="necessiter">
+    <Key>
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_materiel" />
+    </Key>
+    <Property Name="id_recette" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_materiel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="personnel">
+    <Key>
+      <PropertyRef Name="id_personnel" />
+    </Key>
+    <Property Name="id_personnel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_personnel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="prenom_personnel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="metier_personnel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type_personnel" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="preparer">
+    <Key>
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_personnel" />
+    </Key>
+    <Property Name="id_recette" Type="int" Nullable="false" />
+    <Property Name="id_personnel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="recette">
+    <Key>
+      <PropertyRef Name="id_recette" />
+    </Key>
+    <Property Name="id_recette" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_recette" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="prix_recette" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="type_recette" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="preparateur_recette" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="quantite_recette" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="stockage_recette" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="temps_preparation" Type="time" Precision="7" Nullable="false" />
+    <Property Name="temps_repos" Type="time" Precision="7" Nullable="false" />
+    <Property Name="temps_cuisson" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reservation">
+    <Key>
+      <PropertyRef Name="id_reservation" />
+    </Key>
+    <Property Name="id_reservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom_reservation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="horaire_reservation" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="table_reservation" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="id_table" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tablee">
+    <Key>
+      <PropertyRef Name="id_tablee" />
+    </Key>
+    <Property Name="id_tablee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carre_tablee" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="rang_tablee" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="numero_tablee" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="capacite_tablee" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="occupation_tablee" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="defaultModel1StoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="boisson" EntityType="Self.boisson" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="commande" EntityType="Self.commande" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="commander" EntityType="Self.commander" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="composer" EntityType="Self.composer" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="constituer" EntityType="Self.constituer" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="etre" EntityType="Self.etre" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="ingredient" EntityType="Self.ingredient" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="materiel" EntityType="Self.materiel" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="materiel_lavable" EntityType="Self.materiel_lavable" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="mobiliser" EntityType="Self.mobiliser" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="necessiter" EntityType="Self.necessiter" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="personnel" EntityType="Self.personnel" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="preparer" EntityType="Self.preparer" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="recette" EntityType="Self.recette" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="reservation" EntityType="Self.reservation" Schema="masterchef3" store:Type="Tables" />
+    <EntitySet Name="tablee" EntityType="Self.tablee" Schema="masterchef3" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="defaultModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="boisson">
+    <Key>
+      <PropertyRef Name="id_boisson" />
+    </Key>
+    <Property Name="id_boisson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_boisson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="prix_boisson" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="commande">
+    <Key>
+      <PropertyRef Name="id_commande" />
+    </Key>
+    <Property Name="id_commande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_table" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="commander">
+    <Key>
+      <PropertyRef Name="id_commande" />
+      <PropertyRef Name="id_table" />
+    </Key>
+    <Property Name="id_commande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_table" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="composer">
+    <Key>
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_ingredient" />
+    </Key>
+    <Property Name="id_recette" Type="Int32" Nullable="false" />
+    <Property Name="id_ingredient" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="constituer">
+    <Key>
+      <PropertyRef Name="id_boisson" />
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_commande" />
+    </Key>
+    <Property Name="id_boisson" Type="Int32" Nullable="false" />
+    <Property Name="id_recette" Type="Int32" Nullable="false" />
+    <Property Name="id_commande" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="etre">
+    <Key>
+      <PropertyRef Name="id_materiel" />
+      <PropertyRef Name="id_materiel_lavable" />
+    </Key>
+    <Property Name="id_materiel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_materiel_lavable" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ingredient">
+    <Key>
+      <PropertyRef Name="id_ingredient" />
+    </Key>
+    <Property Name="id_ingredient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_ingredient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stockage_ingredient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materiel">
+    <Key>
+      <PropertyRef Name="id_materiel" />
+    </Key>
+    <Property Name="id_materiel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_materiel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nombre_materiel" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="type_materiel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lavable" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="materiel_lavable">
+    <Key>
+      <PropertyRef Name="id_materiel_lavable" />
+    </Key>
+    <Property Name="id_materiel_lavable" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="propre" Type="Int16" Nullable="false" />
+    <Property Name="id_materiel" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mobiliser">
+    <Key>
+      <PropertyRef Name="id_table" />
+      <PropertyRef Name="id_reservation" />
+    </Key>
+    <Property Name="id_table" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_reservation" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="necessiter">
+    <Key>
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_materiel" />
+    </Key>
+    <Property Name="id_recette" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_materiel" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="personnel">
+    <Key>
+      <PropertyRef Name="id_personnel" />
+    </Key>
+    <Property Name="id_personnel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_personnel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="prenom_personnel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="metier_personnel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type_personnel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="preparer">
+    <Key>
+      <PropertyRef Name="id_recette" />
+      <PropertyRef Name="id_personnel" />
+    </Key>
+    <Property Name="id_recette" Type="Int32" Nullable="false" />
+    <Property Name="id_personnel" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="recette">
+    <Key>
+      <PropertyRef Name="id_recette" />
+    </Key>
+    <Property Name="id_recette" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_recette" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="prix_recette" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="type_recette" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="preparateur_recette" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="quantite_recette" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="stockage_recette" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="temps_preparation" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="temps_repos" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="temps_cuisson" Type="Time" Nullable="false" Precision="7" />
+  </EntityType>
+  <EntityType Name="reservation">
+    <Key>
+      <PropertyRef Name="id_reservation" />
+    </Key>
+    <Property Name="id_reservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom_reservation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="horaire_reservation" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="table_reservation" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="id_table" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tablee">
+    <Key>
+      <PropertyRef Name="id_tablee" />
+    </Key>
+    <Property Name="id_tablee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carre_tablee" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="rang_tablee" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="numero_tablee" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="capacite_tablee" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="occupation_tablee" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="defaultEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="boisson" EntityType="Self.boisson" />
+    <EntitySet Name="commande" EntityType="Self.commande" />
+    <EntitySet Name="commander" EntityType="Self.commander" />
+    <EntitySet Name="composer" EntityType="Self.composer" />
+    <EntitySet Name="constituer" EntityType="Self.constituer" />
+    <EntitySet Name="etre" EntityType="Self.etre" />
+    <EntitySet Name="ingredient" EntityType="Self.ingredient" />
+    <EntitySet Name="materiel" EntityType="Self.materiel" />
+    <EntitySet Name="materiel_lavable" EntityType="Self.materiel_lavable" />
+    <EntitySet Name="mobiliser" EntityType="Self.mobiliser" />
+    <EntitySet Name="necessiter" EntityType="Self.necessiter" />
+    <EntitySet Name="personnel" EntityType="Self.personnel" />
+    <EntitySet Name="preparer" EntityType="Self.preparer" />
+    <EntitySet Name="recette" EntityType="Self.recette" />
+    <EntitySet Name="reservation" EntityType="Self.reservation" />
+    <EntitySet Name="tablee" EntityType="Self.tablee" />
+  </EntityContainer>
+</Schema>
