@@ -28,16 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
-            this.refresh = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // refresh
-            // 
-            this.refresh.Enabled = true;
-            this.refresh.Interval = 1;
-            this.refresh.Tick += new System.EventHandler(this.refresh_Tick);
             // 
             // salle
             // 
@@ -53,6 +45,5 @@
         #endregion
 
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
-        private System.Windows.Forms.Timer refresh;
     }
 }

@@ -14,7 +14,8 @@ namespace MasterChef3
     {
         salle sal = new salle();
         cuisine cuis = new cuisine();
-        TextBox nbClient = new TextBox();
+        NumericUpDown nbClient = new NumericUpDown();
+        NumericUpDown numTable = new NumericUpDown();
 
         public settings()
         {
@@ -25,17 +26,26 @@ namespace MasterChef3
 
             GroupBox salleBox = new GroupBox();
             salleBox.FlatStyle = FlatStyle.Flat;
-            salleBox.Text = "Salle management";
+            salleBox.Text = "Restaurant management";
             salleBox.Size = new Size(300, 400);
             salleBox.Location = new Point(50, 50);
             Controls.Add(salleBox);
 
             Button salleShow = new Button();
-            salleShow.Text = "Show";
+            salleShow.Text = "Show salle";
             salleShow.Tag = "Salle";
-            salleShow.Location = new Point(200, 300);
+            salleShow.Location = new Point(166, 300);
+            salleShow.Size = new Size(100, 25);
             salleShow.Click += new System.EventHandler(this.roomShow_Click);
             salleBox.Controls.Add(salleShow);
+
+            Button cuisineShow = new Button();
+            cuisineShow.Text = "Show cuisine";
+            cuisineShow.Tag = "Cuisine";
+            cuisineShow.Location = new Point(33, 300);
+            cuisineShow.Size = new Size(100, 25);
+            cuisineShow.Click += new System.EventHandler(this.roomShow_Click);
+            salleBox.Controls.Add(cuisineShow);
 
             nbClient.Location = new Point(50, 200);
             salleBox.Controls.Add(nbClient);
@@ -46,22 +56,24 @@ namespace MasterChef3
             addClient.Click += new System.EventHandler(this.clientAdd);
             salleBox.Controls.Add(addClient);
 
+            numTable.Location = new Point(50, 100);
+            salleBox.Controls.Add(numTable);
+
+            Button tableNumber = new Button();
+            tableNumber.Text = "Table nb";
+            tableNumber.Location = new Point(200, 100);
+            tableNumber.Click += new System.EventHandler(this.tableState);
+            salleBox.Controls.Add(tableNumber);
+
 
 
 
             GroupBox cuisineBox = new GroupBox();
             cuisineBox.FlatStyle = FlatStyle.Flat;
-            cuisineBox.Text = "Cuisine management";
+            cuisineBox.Text = "Time Control";
             cuisineBox.Size = new Size(300, 400);
             cuisineBox.Location = new Point(50, 500);
             Controls.Add(cuisineBox);
-
-            Button cuisineShow = new Button();
-            cuisineShow.Text = "Show";
-            cuisineShow.Tag = "Cuisine";
-            cuisineShow.Location = new Point(200, 300);
-            cuisineShow.Click += new System.EventHandler(this.roomShow_Click);
-            cuisineBox.Controls.Add(cuisineShow);
         }
 
         private void roomShow_Click (Object sender, EventArgs e)
@@ -87,8 +99,55 @@ namespace MasterChef3
             }
             else
             {
-                int clients = int.Parse(nbClient.Text);
-                sal.clientArrival(clients);
+                sal.clientArrival(nbClient.Text);
+            }
+        }
+
+        public void crState(String etat, String position)
+        {
+            sal.crLabel.Text = "Le chef de Rang est : " + position + "\n\n\nIl est en train de : " + etat;
+        }
+
+        public void serveurState(String etat, String position)
+        {
+            sal.serveurLabel.Text = "Le serveur est : " + position + "\n\n\nIl est en train de : " + etat;
+        }
+
+        public void ccState(String etat)
+        {
+            cuis.ccLabel.Text = "Le chef de Rang est est en train de : " + etat;
+        }
+
+        public void cp1State(String etat)
+        {
+            cuis.cp1Label.Text = "Le serveur est est en train de : " + etat;
+        }
+
+        public void cp2State(String etat)
+        {
+            cuis.cp2Label.Text = "Le chef de partie 2 est en train de : " + etat;
+        }
+
+        public void tableState (Object sender, EventArgs e)
+        {
+            int tableEtat = 19;
+            Console.WriteLine(this.numTable.Text);
+            sal.tableBox.Text = "Table N°" + this.numTable.Text;
+            
+            switch (tableEtat)
+            {
+                case 0:
+                    sal.tableLabel.Text = "La table est en train de manger";
+                    break;
+
+                case -1:
+                    sal.tableLabel.Text = "La table est innocupée";
+                    break;
+
+                default:
+                    sal.tableLabel.Text = "La table attends depuis " + tableEtat + " secondes";
+                    break;
+                
             }
         }
     }

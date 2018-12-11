@@ -16,7 +16,8 @@ namespace MasterChef3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new settings());
+            settings param = new settings();
+            Application.Run(param);
         }
     }
 }

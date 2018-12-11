@@ -13,8 +13,11 @@ namespace MasterChef3
 {
     public partial class salle : Form
     {
+        public GroupBox tableBox = new GroupBox();
+        public Label tableLabel = new Label();
+        public Label crLabel = new Label();
+        public Label serveurLabel = new Label();
         public Label waitingQueue = new Label();
-
         public salle()
         {
             InitializeComponent();
@@ -22,12 +25,16 @@ namespace MasterChef3
             this.Size = new Size(615, 635);
             this.Location = new Point(0, 500);
 
-            GroupBox tableBox = new GroupBox();
             tableBox.FlatStyle = FlatStyle.Flat;
-            tableBox.Text = "Tables";
+            tableBox.Text = "Table N°1";
             tableBox.Size = new Size(285, 285);
             tableBox.Location = new Point(10, 10);
             Controls.Add(tableBox);
+
+            tableLabel.Text = "La table est en train de manger";
+            tableLabel.AutoSize = true;
+            tableLabel.Location = new Point(20, 20);
+            tableBox.Controls.Add(tableLabel);
 
 
 
@@ -38,6 +45,11 @@ namespace MasterChef3
             crBox.Location = new Point(305, 10);
             Controls.Add(crBox);
 
+            crLabel.Text = "Le chef de Rang est : à l'accueil\n\n\nIl est en train de : Attendre";
+            crLabel.AutoSize = true;
+            crLabel.Location = new Point(20, 20);
+            crBox.Controls.Add(crLabel);
+
 
 
             GroupBox serveurBox = new GroupBox();
@@ -46,6 +58,11 @@ namespace MasterChef3
             serveurBox.Size = new Size(285, 285);
             serveurBox.Location = new Point(10, 305);
             Controls.Add(serveurBox);
+
+            serveurLabel.Text = "Le serveur est : à l'accueil\n\n\nIl est en train de : Attendre";
+            serveurLabel.AutoSize = true;
+            serveurLabel.Location = new Point(20, 20);
+            serveurBox.Controls.Add(serveurLabel);
 
 
 
@@ -56,22 +73,16 @@ namespace MasterChef3
             mhBox.Location = new Point(305, 305);
             Controls.Add(mhBox);
 
-            Label waitingQueue= new Label();
-            waitingQueue.Text = "Aucun clients en attente d'être placés";
+            waitingQueue.Text = "Clients en attente d'être placés : 0";
             waitingQueue.Tag = "waitingTitle";
             waitingQueue.AutoSize = true;
             waitingQueue.Location = new Point(20, 20);
             mhBox.Controls.Add(waitingQueue);
         }
 
-        public void clientArrival(int number)
+        public void clientArrival(String number)
         {
-            waitingQueue.Text = " clients attendent d'être placés";
-        }
-
-        private void refresh_Tick(object sender, EventArgs e)
-        {
-            this.Refresh();
+            waitingQueue.Text = "Clients en attente d'être placés : " + number;
         }
     }
 }
