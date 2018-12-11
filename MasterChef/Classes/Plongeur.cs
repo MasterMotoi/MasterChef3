@@ -22,6 +22,9 @@ namespace Classes
             this.placeCouverts = 24;
             this.placeVerres = 24;
 
+            this.occupe = new Semaphore(1, 1);
+            this.listeMaterielLavable = new Semaphore(1, 1);
+
             this.aTimer = new System.Timers.Timer();
             this.aTimer.Interval = 7000;
             this.aTimer.Elapsed += OnTimedEvent;

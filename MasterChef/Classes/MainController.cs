@@ -12,7 +12,7 @@ namespace Classes
         public static List<Table> tables;
         public static List<Materiel> materiel;
         public static List<MaterielLavable> materielLavable;
-        ...
+        //...
 
         public static void remplirRecettes()
         {
@@ -23,6 +23,6 @@ namespace Classes
         {
             /*je me connct a la base donnees et je remplis la liste du meteriel*/
         }
-        ...
+        //...
     }
 }
