@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    class Materiel
+    public class Materiel
     {
         public int nombre;
         public string nom;

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    class MaitreHotel
+    public class MaitreHotel
     {
         public MaitreHotel()
         {
 
         }
+
         public void donnerOrdreInstallerClients(ChefRang cr, GroupeClients clients)
         {
             cr.placerClients(clients);

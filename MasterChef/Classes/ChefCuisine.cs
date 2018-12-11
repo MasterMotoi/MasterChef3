@@ -29,7 +29,7 @@ namespace Classes
                 {
                     foreach (Cuisinier c in cuisiniers)
                     {
-                        if (r.type == c.type)
+                        if (r.typeCuisinier == c.type)
                         {
                             c.recettesAEffectuer.Add(r);
                             break;

@@ -14,10 +14,11 @@ namespace Classes
         public int tempsPreparation { get; set; }
         public int tempsCuisson { get; set; }
         public int tempsRepos { set; get; }
+        public int prix { set; get; }
         /// <summary>
         /// initiate a new recipe
         /// </summary>
-        public Recette(string type, string typeCuisinier, int tempsPreparation, int tempsCuisson, int tempsRepos, int restants)
+        public Recette(string type, string typeCuisinier, int tempsPreparation, int tempsCuisson, int tempsRepos, int restants, int prix)
         {
             this.type = type;
             this.typeCuisinier = typeCuisinier;
@@ -25,6 +26,7 @@ namespace Classes
             this.tempsCuisson = tempsCuisson;
             this.tempsRepos = tempsRepos;
             this.restants = restants;
+            this.prix = prix;
         }
     }
 }

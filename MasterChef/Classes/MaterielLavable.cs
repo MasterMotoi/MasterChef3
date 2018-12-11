@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Classes
 {
-    class MaterielLavable:Materiel
+    public class MaterielLavable
     {
         public bool propre;
+        public string nom;
+        public int nombre;
 
-        public MaterielLavable(string nom, int nombre):base(nom,nombre)
+        public MaterielLavable(string nom, int nombre)
         {
             this.nom = nom;
             this.nombre = nombre;

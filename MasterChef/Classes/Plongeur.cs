@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace Classes
 {
-    class Plongeur
+    public class Plongeur
     {
         public System.Timers.Timer aTimer;
         public int placeAssiettes;

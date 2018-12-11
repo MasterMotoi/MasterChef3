@@ -12,7 +12,12 @@ namespace Classes
         public static List<Table> tables;
         public static List<Materiel> materiel;
         public static List<MaterielLavable> materielLavable;
-        //...
+        public static ChefCuisine chefCuisine;
+        public static ChefRang chefRang;
+        public static List<Cuisinier> cuisinier;
+        public static MaitreHotel maitreHotel;
+        public static Plongeur plongeur;
+        public static Serveur serveur;
 
         public static void remplirRecettes()
         {
