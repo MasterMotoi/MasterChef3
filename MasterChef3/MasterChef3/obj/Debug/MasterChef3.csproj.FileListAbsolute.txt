@@ -1,9 +1,11 @@
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\bin\Debug\MasterChef3.exe.config
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\bin\Debug\MasterChef3.exe
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\bin\Debug\MasterChef3.pdb
-C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.csprojResolveAssemblyReference.cache
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.Properties.Resources.resources
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.csproj.GenerateResource.Cache
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.exe
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.pdb
-C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.Form1.resources
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.salle.resources
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.settings.resources
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.cuisine.resources
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.csprojResolveAssemblyReference.cache
