@@ -8,6 +8,6 @@ namespace MasterChef3
 {
     class Donnees
     {
-        public List<recette> recettes
+        public List<recette>
     }
 }
