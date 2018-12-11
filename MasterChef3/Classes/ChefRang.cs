@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes;
 
 namespace Classes
 {
@@ -25,8 +26,10 @@ namespace Classes
         /// </summary>
         public void placerClients(GroupeClients clients)
         {
+            Console.WriteLine(clients.temps);
             clients.table.occupee = true;
             clients.place = true;
+            clients.aTimer.Enabled = true;
         }
 
         /// <summary>
@@ -66,7 +69,7 @@ namespace Classes
         public void changerCommande()
         {
             List<Recette> recettesIndisponibles = new List<Recette>();
-            List<Recette> recettesExistantes = Donnees.recettesExistantes;
+            List<Recette> recettesExistantes = MainController.recettes;
 
             bool commande_changee = clients.changerCommande(recettesExistantes);
             while (commande_changee == true)
@@ -82,7 +85,7 @@ namespace Classes
         {
             this.clients.commandeTransmise = false;
             List<Recette> recettesIndisponibles = new List<Recette>();
-            List<Recette> recettesExistantes = Donnees.recettesExistantes;
+            List<Recette> recettesExistantes = MainController.recettes;
             int recettes_changees = clients.changerRecettes(recettesExistantes);
 
             while(recettes_changees>0)

@@ -20,7 +20,7 @@ namespace Classes
         /// </summary>
         public void dispatcherRecettes(Commande commande)
         {
-            List<Cuisinier> cuisiniers = Donnees.cuisiniers;
+            List<Cuisinier> cuisiniers = MainController.cuisiniers;
             string typeACuisiner = this.trouverTypeACuisiner(commande.recettes);
 
             foreach (Recette r in commande.recettes)
@@ -29,7 +29,7 @@ namespace Classes
                 {
                     foreach (Cuisinier c in cuisiniers)
                     {
-                        if (r.type == c.type)
+                        if (r.typeCuisinier == c.type)
                         {
                             c.recettesAEffectuer.Add(r);
                             break;

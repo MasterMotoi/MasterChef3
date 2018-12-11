@@ -9,6 +9,7 @@ namespace Classes
     public class Serveur
     {
         public List<Recette> recettes_portees;
+
         public Serveur()
         {
             this.recettes_portees = new List<Recette>();
@@ -42,7 +43,7 @@ namespace Classes
 
         public void lancerLaSuite(GroupeClients clients)
         {
-            ChefCuisine chefCuisine = Donnees.chefcuisine;
+            ChefCuisine chefCuisine = MainController.chefCuisine;
             chefCuisine.dispatcherRecettes(clients.commande);
         }
 

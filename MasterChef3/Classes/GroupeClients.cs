@@ -24,10 +24,12 @@ namespace Classes
         /// </summary>
         public GroupeClients(int nombre=2)
         {
+            this.temps = 0;
             this.aTimer = new System.Timers.Timer();
             this.aTimer.Interval = 1000;
             this.aTimer.Elapsed += OnTimedEvent;
             this.aTimer.AutoReset = true;
+            this.aTimer.Enabled = false;
 
             this.nombre = nombre;
             this.commandeTransmise = false;
@@ -80,6 +82,7 @@ namespace Classes
 
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
+            Console.WriteLine(this.temps);
             this.temps++;
         }
 
@@ -110,7 +113,7 @@ namespace Classes
         /// </summary>
         public Commande genererCommande(int nombreRecettes,List<Recette> recettesExistantes)
         {
-            Commande commande = new Commande();
+            Commande commande = new Commande(this);
             for (int i = 0; i < nombreRecettes; i++)
             {
                 commande.recettes.Add(this.genererRecette(recettesExistantes));

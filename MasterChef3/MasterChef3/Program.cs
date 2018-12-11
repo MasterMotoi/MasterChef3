@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Classes;
 
 
 namespace MasterChef3
@@ -15,6 +16,10 @@ namespace MasterChef3
         [STAThread]
         static void Main()
         {
+
+
+            MainController.adding();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             settings param = new settings();

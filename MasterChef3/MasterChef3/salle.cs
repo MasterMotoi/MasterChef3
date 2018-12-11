@@ -18,6 +18,7 @@ namespace MasterChef3
         public Label crLabel = new Label();
         public Label serveurLabel = new Label();
         public Label waitingQueue = new Label();
+        public Label recaleLabel = new Label();
         public salle()
         {
             InitializeComponent();
@@ -73,11 +74,17 @@ namespace MasterChef3
             mhBox.Location = new Point(305, 305);
             Controls.Add(mhBox);
 
-            waitingQueue.Text = "Clients en attente d'être placés : 0";
+            waitingQueue.Text = "0 Clients ont été placés";
             waitingQueue.Tag = "waitingTitle";
             waitingQueue.AutoSize = true;
             waitingQueue.Location = new Point(20, 20);
             mhBox.Controls.Add(waitingQueue);
+
+            recaleLabel.Text = "0 Clients ont été recalés";
+            recaleLabel.Tag = "waitingTitle";
+            recaleLabel.AutoSize = true;
+            recaleLabel.Location = new Point(20, 50);
+            mhBox.Controls.Add(recaleLabel);
         }
 
         public void clientArrival(String number)

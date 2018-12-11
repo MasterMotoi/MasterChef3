@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,9 +17,13 @@ namespace MasterChef3
         cuisine cuis = new cuisine();
         NumericUpDown nbClient = new NumericUpDown();
         NumericUpDown numTable = new NumericUpDown();
+        int clientsPlaces;
+        int clientsRecales;
 
         public settings()
         {
+            clientsPlaces = clientsRecales = 0;
+
             InitializeComponent();
             this.Text = "Settings";
             this.Size = new Size(400, 950);
@@ -99,7 +104,17 @@ namespace MasterChef3
             }
             else
             {
-                sal.clientArrival(nbClient.Text);
+                int nc = MainController.clientsArrivage(int.Parse(nbClient.Text));
+                if (nc < 0)
+                {
+                    clientsRecales -= nc;
+                    sal.recaleLabel.Text = clientsRecales + " clients ont été recalés";
+                }
+                else
+                {
+                    clientsPlaces += nc;
+                    sal.waitingQueue.Text = clientsPlaces + " clients ont été placés ce soir";
+                }
             }
         }
 
@@ -130,7 +145,7 @@ namespace MasterChef3
 
         public void tableState (Object sender, EventArgs e)
         {
-            int tableEtat = 19;
+            int tableEtat = MainController.tableTimer(int.Parse(this.numTable.Text));
             Console.WriteLine(this.numTable.Text);
             sal.tableBox.Text = "Table N°" + this.numTable.Text;
             

@@ -20,6 +20,8 @@ namespace Classes
         public Table(int capacite, int numero)
         {
             this.dressee = true;
+            this.propre = true;
+            this.occupee = false;
             this.capacite = capacite;
             this.numero = numero;
         }
