@@ -8,4 +8,3 @@ C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\M
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.salle.resources
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.settings.resources
 C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.cuisine.resources
-C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\MasterChef3\obj\Debug\MasterChef3.csprojResolveAssemblyReference.cache

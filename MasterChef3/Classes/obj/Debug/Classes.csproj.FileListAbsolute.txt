@@ -1,0 +1,5 @@
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\Classes\obj\Debug\Classes.csprojResolveAssemblyReference.cache
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\Classes\bin\Debug\Classes.dll
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\Classes\bin\Debug\Classes.pdb
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\Classes\obj\Debug\Classes.dll
+C:\Users\Fabien Plastina\Desktop\MasterChef3\MasterChef3\Classes\obj\Debug\Classes.pdb

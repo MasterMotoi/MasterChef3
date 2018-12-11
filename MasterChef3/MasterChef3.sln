@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterChef3", "MasterChef3\MasterChef3.csproj", "{5FF53A20-F1CC-4B0D-BC93-8844D4585A80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes", "Classes\Classes.csproj", "{834F401F-7F60-41FF-B0F2-D5F9E312169F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5FF53A20-F1CC-4B0D-BC93-8844D4585A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FF53A20-F1CC-4B0D-BC93-8844D4585A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FF53A20-F1CC-4B0D-BC93-8844D4585A80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834F401F-7F60-41FF-B0F2-D5F9E312169F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834F401F-7F60-41FF-B0F2-D5F9E312169F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834F401F-7F60-41FF-B0F2-D5F9E312169F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834F401F-7F60-41FF-B0F2-D5F9E312169F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
