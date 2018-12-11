@@ -11,6 +11,7 @@ namespace MasterChef3
     internal class connexion
     {
         public static SqlConnection cnn;
+
         public static void ConnectionBDD()
         {
 
@@ -151,10 +152,9 @@ namespace MasterChef3
                 {
                     nom_personnel = reader["nom_personnel"].ToString,
                     prenom_personnel = reader["prenom_personnel"].ToString,
-                    typeCuisinier = prenom_personnel + " " + nom_personnel;
 
                 };
-                result.Add(item);
+                result.Add(item[1]+" "+item[0]);
             }
 
             return result;
