@@ -49,6 +49,8 @@
     <Compile Include="Cuisinier.cs" />
     <Compile Include="GroupeClients.cs" />
     <Compile Include="MaitreHotel.cs" />
+    <Compile Include="Materiel.cs" />
+    <Compile Include="MaterielLavable.cs" />
     <Compile Include="Plongeur.cs" />
     <Compile Include="Recette.cs" />
     <Compile Include="Serveur.cs" />

@@ -10,6 +10,7 @@ namespace Classes
     {
         public int restants { get; set; }
         public string type { get; set; }
+        public string typeCuisinier { set; get; }
         /// <summary>
         /// initiate a new recipe
         /// </summary>
