@@ -17,7 +17,6 @@ namespace MasterChef3
         static void Main()
         {
 
-
             MainController.adding();
 
             Application.EnableVisualStyles();

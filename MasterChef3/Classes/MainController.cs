@@ -22,6 +22,7 @@ namespace Classes
         public static Serveur serveur;
         public static List<GroupeClients> clients;
         public static Comptoir comptoir;
+        public static int caisse;
 
         public static void initTime()
         {
@@ -29,7 +30,7 @@ namespace Classes
             aTimer.Interval = 1000;
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
-            aTimer.Enabled = true; ;
+            aTimer.Enabled = true;
         }
 
         public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
@@ -69,14 +70,28 @@ namespace Classes
             maitreHotel = new MaitreHotel();
             comptoir = new Comptoir();
             recettes = new List<Recette>();
+            serveur = new Serveur();
             chefCuisine = new ChefCuisine();
+            plongeur = new Plongeur();
+            materielLavable = new List<MaterielLavable>();
+            cuisiniers = new List<Cuisinier>();
 
-            recettes.Add(new Recette("salade", "entree", "Eric Blousot", 10, 10, 10, 25, 50));
-            recettes.Add(new Recette("poulet", "plat", "Jean Ruchord", 10, 10, 10, 25, 50));
-            recettes.Add(new Recette("gateau", "dessert", "Eric Blousot", 10, 10, 10, 25, 50));
-            recettes.Add(new Recette("soupe", "entree", "Eric Blousot", 10, 10, 10, 25, 50));
-            recettes.Add(new Recette("poisson", "plat", "Jean Ruchord", 10, 10, 10, 25, 50));
-            recettes.Add(new Recette("mousse", "dessert", "Eric Blousot", 10, 10, 10, 25, 50));
+            cuisiniers.Add(new Cuisinier("Eric Blousot"));
+            cuisiniers.Add(new Cuisinier("Jean Ruchord"));
+
+            materielLavable.Add(new MaterielLavable("assiette", 150));
+            materielLavable.Add(new MaterielLavable("couvert", 600));
+            materielLavable.Add(new MaterielLavable("verre", 150));
+            materielLavable.Add(new MaterielLavable("casserolle", 10));
+            materielLavable.Add(new MaterielLavable("couteau cuisine", 5));
+            materielLavable.Add(new MaterielLavable("poelle", 10));
+            
+            recettes.Add(new Recette("salade", "entree", "Eric Blousot", 1, 5, 1, 25, 50));
+            recettes.Add(new Recette("poulet", "plat", "Jean Ruchord", 1, 5, 1, 25, 50));
+            recettes.Add(new Recette("gateau", "dessert", "Eric Blousot", 1, 5, 1, 25, 50));
+            recettes.Add(new Recette("soupe", "entree", "Eric Blousot", 1, 5, 1, 25, 50));
+            recettes.Add(new Recette("poisson", "plat", "Jean Ruchord", 1, 5, 1, 25, 50));
+            recettes.Add(new Recette("mousse", "dessert", "Eric Blousot", 1, 5, 1, 25, 50));
         }
 
         public static int clientsArrivage(int nbClients)
@@ -98,6 +113,106 @@ namespace Classes
                 return chefRang.etat;
             }
             return chefRang.position;
+        }
+
+        public static string getPositionServeur(int number)
+        {
+            if (number == 0)
+            {
+                return serveur.etat;
+            }
+            return serveur.position;
+        }
+
+        public static void arreterTimers()
+        {
+            aTimer.Enabled = false;
+            foreach(GroupeClients gc in clients)
+            {
+                gc.aTimer.Enabled = false;
+            }
+            plongeur.occupe.WaitOne();
+            plongeur.aTimer.Enabled = false;
+        }
+        public static void reprendreTimers()
+        {
+            aTimer.Enabled = true;
+            foreach (GroupeClients gc in clients)
+            {
+                if (gc.timeractif == true)
+                {
+                    gc.aTimer.Enabled = true;
+                }
+            }
+            plongeur.occupe.Release();
+            plongeur.aTimer.Enabled = true;
+        }
+
+        public static void fastForward()
+        {
+            aTimer.Interval /= 10;
+            foreach (GroupeClients gc in clients)
+            {
+                gc.aTimer.Interval /= 10;
+            }
+            cuisiniers[0].aTimer.Interval /= 10;
+            cuisiniers[1].aTimer.Interval /= 10;
+            plongeur.aTimer.Interval /= 10;
+        }
+
+        public static string getCpState (int qui)
+        {
+            return cuisiniers[qui].etat;
+        }
+
+        public static void slowMo()
+        {
+            aTimer.Interval *= 10;
+            foreach (GroupeClients gc in clients)
+            {
+                if (gc.timeractif == true)
+                {
+                    gc.aTimer.Interval *= 10;
+                }
+            }
+            cuisiniers[0].aTimer.Interval *= 10;
+            cuisiniers[1].aTimer.Interval *= 10;
+            plongeur.aTimer.Interval *= 10;
+        }
+
+        public static List<string> getTableDetails(int numTable)
+        {
+            List<string> details = new List<string>();
+            foreach (GroupeClients gc in clients)
+            {
+                if (gc.table.capacite > 0)
+                {
+                    if (gc.table.numero == numTable)
+                    {
+                        details.Add(gc.nombre + " clients installés sur une table de " + gc.table.capacite);
+
+                        details.Add(gc.etat);
+
+                        foreach(string s in gc.commande.getRecettes())
+                        {
+                            Console.WriteLine(s);
+                            details.Add(s);
+                        }
+                        return details;
+                    }
+                }
+            }
+            return  null;
+        }
+
+        public static string getCcState()
+        {
+            return chefCuisine.etat;
+        }
+
+        public static int gratterLaYoutubeMoney()
+        {
+            return caisse;
         }
     }
 }

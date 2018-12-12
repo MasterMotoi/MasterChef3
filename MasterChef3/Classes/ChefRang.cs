@@ -11,9 +11,9 @@ namespace Classes
     public class ChefRang
     {
         public string etat;
+        public string position;
         public Semaphore semEtat;
         public Semaphore semPosition;
-        public string position;
         public int carre { set; get; }
         public GroupeClients clients { get; set; }
         public bool commandeTransmise { get; set; }
@@ -28,9 +28,9 @@ namespace Classes
             this.carre = carre;
             this.semEtat.WaitOne();
             this.etat = "ne rien faire";
+            this.position = "A l'accueil";
             this.semEtat.Release();
             this.semPosition.WaitOne();
-            this.position = "A l'accueil";
             this.semPosition.Release();
             this.clients = new GroupeClients(1);
         }
@@ -40,8 +40,7 @@ namespace Classes
         /// </summary>
         public void placerClients(GroupeClients clients)
         {
-
-            Console.WriteLine(this.etat);
+            
             this.semEtat.WaitOne();
             this.etat = "placer un client";
             this.semEtat.Release();
@@ -49,6 +48,7 @@ namespace Classes
             this.semPosition.WaitOne();
             this.position = "a la table " + clients.table.numero;
             this.semPosition.Release();
+
             clients.table.occupee = true;
             clients.place = true;
             Thread thread = new Thread(() => clients.choisirCommande(this));
@@ -61,7 +61,7 @@ namespace Classes
         public void transmettreRecettesCommande(ChefCuisine cc)
         {
             this.semEtat.WaitOne();
-            this.etat = "transmettre la commande";
+            this.etat = "transmettre la commande de la table " + this.clients.table.numero;
             this.semEtat.Release();
             this.semPosition.WaitOne();
             this.position = "a la cuisine";

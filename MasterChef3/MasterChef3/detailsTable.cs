@@ -20,7 +20,7 @@ namespace MasterChef3
 
         public detailsTable()
         {
-            this.Size = new Size(200, 600);
+            this.Size = new Size(400, 600);
             this.Text = "Detail Table 1";
             InitializeComponent();
 
@@ -36,21 +36,15 @@ namespace MasterChef3
             nbClients.AutoSize = true;
             this.Controls.Add(nbClients);
 
-            avencRepas = new Label();
-            avencRepas.Text = "Table Vide";
-            avencRepas.Location = new Point(50, 150);
-            avencRepas.AutoSize = true;
-            this.Controls.Add(avencRepas);
-
             statut = new Label();
             statut.Text = "En attente";
-            statut.Location = new Point(50, 200);
+            statut.Location = new Point(50, 150);
             statut.AutoSize = true;
             this.Controls.Add(statut);
 
             commande = new Label();
             commande.Text = "Pas de comande";
-            commande.Location = new Point(50, 250);
+            commande.Location = new Point(50, 200);
             commande.AutoSize = true;
             this.Controls.Add(commande);
         }

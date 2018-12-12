@@ -29,6 +29,7 @@ namespace Classes
             this.aTimer.Interval = 7000;
             this.aTimer.Elapsed += OnTimedEvent;
             this.aTimer.AutoReset = true;
+            this.aTimer.Enabled = true;
         }
 
         public void laverToutMain()

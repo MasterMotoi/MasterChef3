@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace MasterChef3
 {
@@ -18,30 +19,35 @@ namespace MasterChef3
         detailsTable tab = new detailsTable();
         NumericUpDown nbClient = new NumericUpDown();
         NumericUpDown numTable = new NumericUpDown();
+        public Label elapsedTime = new Label();
+        public Label caisseLabel;
         int clientsPlaces;
         int clientsRecales;
+        int tempsEcoule;
 
         public settings()
         {
+            this.tempsEcoule = 0;
+            MainController.initTime();
 
             clientsPlaces = clientsRecales = 0;
 
             InitializeComponent();
             this.Text = "Settings";
-            this.Size = new Size(400, 950);
+            this.Size = new Size(400, 650);
             this.Location = new Point(0,0);
 
             GroupBox salleBox = new GroupBox();
             salleBox.FlatStyle = FlatStyle.Flat;
             salleBox.Text = "Restaurant management";
-            salleBox.Size = new Size(300, 400);
+            salleBox.Size = new Size(300, 250);
             salleBox.Location = new Point(50, 50);
             Controls.Add(salleBox);
 
             Button salleShow = new Button();
             salleShow.Text = "Show salle";
             salleShow.Tag = "Salle";
-            salleShow.Location = new Point(166, 300);
+            salleShow.Location = new Point(166, 150);
             salleShow.Size = new Size(100, 25);
             salleShow.Click += new System.EventHandler(this.roomShow_Click);
             salleBox.Controls.Add(salleShow);
@@ -49,34 +55,34 @@ namespace MasterChef3
             Button cuisineShow = new Button();
             cuisineShow.Text = "Show cuisine";
             cuisineShow.Tag = "Cuisine";
-            cuisineShow.Location = new Point(33, 300);
+            cuisineShow.Location = new Point(33, 150);
             cuisineShow.Size = new Size(100, 25);
             cuisineShow.Click += new System.EventHandler(this.roomShow_Click);
             salleBox.Controls.Add(cuisineShow);
 
-            nbClient.Location = new Point(50, 200);
+            nbClient.Location = new Point(50, 100);
             salleBox.Controls.Add(nbClient);
 
             Button addClient = new Button();
             addClient.Text = "Add Client";
-            addClient.Location = new Point(200, 200);
+            addClient.Location = new Point(200, 100);
             addClient.Click += new System.EventHandler(this.clientAdd);
             salleBox.Controls.Add(addClient);
 
             numTable.Location = new Point(50, 50);
             salleBox.Controls.Add(numTable);
 
-            Button tableNumber = new Button();
-            tableNumber.Text = "Table nb";
-            tableNumber.Location = new Point(200, 50);
-            tableNumber.Click += new System.EventHandler(this.tableState);
-            salleBox.Controls.Add(tableNumber);
-
             Button tableDetails = new Button();
             tableDetails.Text = "Details";
-            tableDetails.Location = new Point(200, 100);
+            tableDetails.Location = new Point(200, 50);
             tableDetails.Click += new System.EventHandler(this.getTableDetail);
             salleBox.Controls.Add(tableDetails);
+
+            caisseLabel = new Label();
+            caisseLabel.Text = "Argent en caisse : 0";
+            caisseLabel.AutoSize = true;
+            caisseLabel.Location = new Point(50, 200);
+            salleBox.Controls.Add(caisseLabel);
 
 
 
@@ -84,15 +90,21 @@ namespace MasterChef3
             GroupBox cuisineBox = new GroupBox();
             cuisineBox.FlatStyle = FlatStyle.Flat;
             cuisineBox.Text = "Other Control";
-            cuisineBox.Size = new Size(300, 400);
-            cuisineBox.Location = new Point(50, 500);
+            cuisineBox.Size = new Size(300, 200);
+            cuisineBox.Location = new Point(50, 350);
             Controls.Add(cuisineBox);
 
             Button pause = new Button();
             pause.Text = "Pause";
-            pause.Location = new Point(50, 50);
+            pause.Location = new Point(50, 100);
             pause.Click += new System.EventHandler(this.timeManagement);
             cuisineBox.Controls.Add(pause);
+
+            Button start = new Button();
+            start.Text = "Start";
+            start.Location = new Point(150, 100);
+            start.Click += new System.EventHandler(this.timeManagement);
+            cuisineBox.Controls.Add(start);
 
             Button fastForward = new Button();
             fastForward.Text = "Fast";
@@ -102,9 +114,19 @@ namespace MasterChef3
 
             Button slowForward = new Button();
             slowForward.Text = "Slow";
-            slowForward.Location = new Point(50, 100);
+            slowForward.Location = new Point(50, 50);
             slowForward.Click += new System.EventHandler(this.timeManagement);
             cuisineBox.Controls.Add(slowForward);
+
+            majTime(this.tempsEcoule);
+            elapsedTime.Location = new Point(50, 150);
+            elapsedTime.AutoSize = true;
+            cuisineBox.Controls.Add(elapsedTime);
+        }
+
+        private void majTime(int temps)
+        {
+            elapsedTime.Text=(temps+" secondes écoulées depuis le début du service");
         }
 
         private void roomShow_Click (Object sender, EventArgs e)
@@ -124,11 +146,45 @@ namespace MasterChef3
 
         public void getTableDetail (Object sender, EventArgs e)
         {
+            List<string> details = MainController.getTableDetails(int.Parse(numTable.Text));
             tab.Show();
             tab.Text = "Details Table " + numTable.Text;
             tab.numTable.Text = "Table N°" + numTable.Text;
-        }
 
+            if (details != null)
+            {
+                tab.nbClients.Text = details[0];
+                tab.statut.Text = details[1];
+                tab.commande.Text = "Détail de la commande : \n\n";
+                for (int i = 2; i < details.Count; i++)
+                {
+                    tab.commande.Text += details[i]+"\n";
+                }
+            }
+        }
+        public void majDetailsTable()
+        {
+            List<string> details = MainController.getTableDetails(int.Parse(numTable.Text));
+            tab.Text = "Details Table " + numTable.Text;
+            tab.numTable.Text = "Table N°" + numTable.Text;
+
+            if (details != null)
+            {
+                tab.nbClients.Text = details[0];
+                tab.statut.Text = details[1];
+                tab.commande.Text = "Détail de la commande : \n\n";
+                for (int i = 2; i < details.Count; i++)
+                {
+                    tab.commande.Text += details[i] + "\n";
+                }
+            }
+            else
+            {
+                tab.nbClients.Text = "Inoccupée";
+                tab.statut.Text = "En attente";
+                tab.commande.Text = "Pas de comande";
+            }
+        }
         private void clientAdd(Object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(nbClient.Text))
@@ -157,15 +213,23 @@ namespace MasterChef3
             switch (clicked.Text)
             {
                 case "Pause":
-                    //On pause
+                    MainController.arreterTimers();
+                    this.refreshTimer.Enabled = false;
+                    break;
+
+                case "Start":
+                    MainController.reprendreTimers();
+                    this.refreshTimer.Enabled = true; 
                     break;
 
                 case "Fast":
-                    //On accélère
+                    MainController.fastForward();
+                    this.refreshTimer.Interval /= 10;
                     break;
 
                 case "Slow":
-                    //On ralentit
+                    MainController.slowMo();
+                    this.refreshTimer.Interval *= 10;
                     break;
             }
         }
@@ -195,10 +259,14 @@ namespace MasterChef3
             cuis.cp2Label.Text = "Le chef de partie 2 est en train de : " + etat;
         }
 
-        public void tableState (Object sender, EventArgs e)
+        public void caisseState(int nombre)
+        {
+            caisseLabel.Text = "Argent en caisse : " + nombre;
+        }
+
+        public void tableState ()
         {
             int tableEtat = MainController.tableTimer(int.Parse(this.numTable.Text));
-            Console.WriteLine(this.numTable.Text);
             sal.tableBox.Text = "Table N°" + this.numTable.Text;
             
             switch (tableEtat)
@@ -220,7 +288,16 @@ namespace MasterChef3
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
+            tableState();
             crState(MainController.getPositionCr(0), MainController.getPositionCr(666));
+            serveurState(MainController.getPositionServeur(0), MainController.getPositionServeur(666));
+            this.tempsEcoule++;
+            majTime(this.tempsEcoule);
+            ccState(MainController.getCcState());
+            cp1State(MainController.getCpState(0));
+            cp2State(MainController.getCpState(1));
+            majDetailsTable();
+            caisseState(MainController.gratterLaYoutubeMoney());
         }
     }
 }

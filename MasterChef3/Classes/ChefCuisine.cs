@@ -8,12 +8,12 @@ namespace Classes
 {
     public class ChefCuisine
     {
-
         private List<Recette> recettesADispatcher { get; set; }
+        public string etat;
 
         public ChefCuisine()
         {
-
+            this.etat = "ne fait rien";
         }
         /// <summary>
         /// gives a list of recipes to a list of cookers
@@ -31,7 +31,9 @@ namespace Classes
                     {
                         if (r.typeCuisinier == c.type)
                         {
-                            c.recettesAEffectuer.Add(r);
+                            this.etat = "\na donne a faire un "+r.nom+" a "+c.type;
+                            c.preparerRecette(r);
+                            //c.recettesAEffectuer.Add(r);
                             break;
                         }
                     }

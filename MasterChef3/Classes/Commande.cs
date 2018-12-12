@@ -21,5 +21,14 @@ namespace Classes
             this.recettesValidees = new List<Recette>();
             this.clients = clients;
         }
+        public List<string> getRecettes()
+        {
+            List<string> liste = new List<string>();
+            foreach(Recette r in recettes)
+            {
+                liste.Add(r.nom);
+            }
+            return liste;
+        }
     }
 }

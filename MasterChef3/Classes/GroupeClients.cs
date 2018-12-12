@@ -18,12 +18,16 @@ namespace Classes
         public Commande commande { get; set; }
         public bool accueilli { set; get; }
         public int temps { set; get; }
+        public bool timeractif;
+        public string etat;
+        public int note;
 
         /// <summary>
         /// initiate a new client group with the number of persons inside.
         /// </summary>
         public GroupeClients(int nombre=2)
         {
+            note = 0;
             this.commande = new Commande(this);
             this.temps = 0;
             this.aTimer = new System.Timers.Timer();
@@ -31,28 +35,36 @@ namespace Classes
             this.aTimer.Elapsed += OnTimedEvent;
             this.aTimer.AutoReset = true;
             this.aTimer.Enabled = false;
+            this.timeractif = false;
 
+            this.table = new Table(0, 0);
             this.nombre = nombre;
             this.commandeTransmise = false;
+            this.etat = "";
         }
 
         public void choisirCommande(ChefRang cr)
         {
+            etat = "En train de choisir la commande";
             System.Threading.Thread.Sleep(5000);
+            etat = "Attendent pour passer commande";
             this.aTimer.Enabled = true;
+            this.timeractif = true;
             this.genererCommande(this.nombre, MainController.recettes);
             cr.prendreCommande(this);
+            etat = "Ont passé commande";
         }
         /// <summary>
         /// changes the command of the client group regarding the number of remaining recipes
         /// </summary>
         public int changerRecettes(List<Recette> recettesExistantes)
         {
+            Random rand = new Random();
             int recettes_changees = 0;
             for (int i = 0; i < this.commande.recettes.Count; i++)
             {
                 if (this.commande.recettes[i].restants==0){
-                    this.commande.recettes[i] = this.genererRecette(recettesExistantes);
+                    this.commande.recettes[i] = this.genererRecette(recettesExistantes, rand);
                     recettes_changees++;
                 }
             }
@@ -61,7 +73,9 @@ namespace Classes
 
         public void seFaireServir(Recette recette, Serveur serveur)
         {
+            etat = "Reçoit la nourriture";
             this.commande.recettes.Remove(recette);
+            Console.WriteLine("ils ont recu un " + recette.nom);
             if(!ilResteDesRecettesDeCeType(recette.type))
             {
                 this.manger();
@@ -83,14 +97,15 @@ namespace Classes
 
         public void manger()
         {
+            etat = "Mangent";
             this.aTimer.Enabled = false;
+            this.timeractif = false;
             this.temps = 0;
             new Thread(fonctionQuiAttendLeTempsDeManger).Start();
         }
 
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine(this.temps);
             this.temps++;
         }
 
@@ -98,18 +113,21 @@ namespace Classes
         {
             System.Threading.Thread.Sleep(15000);
             this.aTimer.Enabled = true;
+            this.timeractif = true;
+            etat = "Attendent leur plat suivant";
         }
         /// <summary>
         /// changes the command of the client group regarding if the chef de cuisine accepted it or not
         /// </summary>
         public bool changerCommande(List<Recette> recettesExistantes)
         {
+            Random rand = new Random();
             bool commande_changee = false;
             for (int i = 0; i < this.commande.recettes.Count; i++)
             {
                 if (!(this.commande.recettesValidees.Contains(this.commande.recettes[i])))
                 {
-                    this.commande.recettes[i] = this.genererRecette(recettesExistantes);
+                    this.commande.recettes[i] = this.genererRecette(recettesExistantes, rand);
                     commande_changee=true;
                 }
             }
@@ -119,20 +137,23 @@ namespace Classes
         /// <summary>
         /// create a random command, excluding unavailable recipes
         /// </summary>
-        public Commande genererCommande(int nombreRecettes,List<Recette> recettesExistantes)
+        public void genererCommande(int nombreRecettes,List<Recette> recettesExistantes)
         {
             Commande commande = new Commande(this);
+            Random r = new Random();
             for (int i = 0; i < nombreRecettes; i++)
             {
-                commande.recettes.Add(this.genererRecette(recettesExistantes));
+                commande.recettes.Add(this.genererRecette(recettesExistantes, r));
+                note += commande.recettes[commande.recettes.Count - 1].prix;
             }
-            return commande;
+            this.commande=commande;
+
         }
        
         /// <summary>
         /// generate a random recipe using a list of recipes, excluding unavailable ones.
         /// </summary>
-        public Recette genererRecette(List<Recette> recettesExistantes)
+        public Recette genererRecette(List<Recette> recettesExistantes, Random rand)
         {
             List<Recette> recettesDisponibles = new List<Recette>();
             foreach (Recette r in recettesExistantes)
@@ -142,9 +163,15 @@ namespace Classes
                     recettesDisponibles.Add(r);
                 }
             }
+            
+            return recettesDisponibles[rand.Next(0, recettesDisponibles.Count - 1)];
+        }
 
-            Random random = new Random();
-            return recettesDisponibles[random.Next(0, recettesDisponibles.Count - 1)];
+        public void payer()
+        {
+            MainController.caisse =+ note;
+            this.table.occupee = false;
+            MainController.clients.Remove(this);
         }
     }
 }

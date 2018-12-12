@@ -12,7 +12,7 @@ namespace Classes
 
         public Comptoir()
         {
-
+            this.recettes = new List<Recette>();
         }
     }
 }
