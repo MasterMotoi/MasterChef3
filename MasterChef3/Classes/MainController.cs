@@ -195,7 +195,6 @@ namespace Classes
 
                         foreach(string s in gc.commande.getRecettes())
                         {
-                            Console.WriteLine(s);
                             details.Add(s);
                         }
                         return details;

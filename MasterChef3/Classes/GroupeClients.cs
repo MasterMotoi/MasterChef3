@@ -75,7 +75,6 @@ namespace Classes
         {
             etat = "Reçoit la nourriture";
             this.commande.recettes.Remove(recette);
-            Console.WriteLine("ils ont recu un " + recette.nom);
             if(!ilResteDesRecettesDeCeType(recette.type))
             {
                 this.manger();
